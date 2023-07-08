@@ -66,7 +66,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         AppManager::salesChecking(
             $Config,
             $developerLogin,
-            $TestAuthToken
+            "[Employer Login App Token]"
         );
 
     // Company Access All Customers
@@ -74,7 +74,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         Customer::records(
             $Config,
             $developerLogin,
-            $TestAuthToken
+            "[Employer Login App Token]"
         );
 
 
@@ -83,8 +83,8 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         Customer::profile(
             $Config,
             $developerLogin,
-            $TestAuthToken,
-            4
+            "[Employer Login App Token]",
+            "[Customer ID]"
         );
 
 
@@ -103,7 +103,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         CompanyManager::offices(
             $Config,
             $developerLogin,
-            $TestAuthToken
+            "[Employer Login App Token]"
         );
 
 
@@ -112,7 +112,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         CompanyManager::employers(
             $Config,
             $developerLogin,
-            $TestAuthToken
+            "[Employer Login App Token]"
         );
 
 
@@ -121,7 +121,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         CompanyManager::reminders(
             $Config,
             $developerLogin,
-            $TestAuthToken
+            "[Employer Login App Token]"
         );
 
     // Employer Reminder Profile
@@ -129,7 +129,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         CompanyManager::reminder(
             $Config,
             $developerLogin,
-            $TestAuthToken,
+            "[Employer Login App Token]",
             "[Reminder ID]"
         );
 
@@ -147,7 +147,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         Customer::reminders(
             $Config,
             $developerLogin,
-            $TestAuthToken,
+            "[Employer Login App Token]",
             "[Customer ID]"
         );
 
@@ -156,7 +156,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         Customer::reminder(
             $Config,
             $developerLogin,
-            $TestAuthToken,
+            "[Employer Login App Token]",
             "[Reminder ID]"
         );
 
