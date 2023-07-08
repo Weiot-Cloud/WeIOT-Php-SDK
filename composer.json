@@ -3,9 +3,8 @@
     "type": "library",
     "description": "WeIOT Php Sdk for Developer",
     "license": "MIT",
-    "minimum-stability": "dev-main",
+    "minimum-stability": "dev",
     "require": {
-        "weiot/phpsdk": "dev-main",
         "guzzlehttp/guzzle": "^7.7",
         "php": ">=7.0.0",
         "ext-curl": "*"
