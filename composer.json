@@ -1,8 +1,12 @@
 {
     "name": "weiot/phpsdk",
+    "type": "library",
     "description": "WeIOT Php Sdk for Developer",
+    "license": "MIT",
     "require": {
-        "guzzlehttp/guzzle": "^7.7"
+        "guzzlehttp/guzzle": "^7.7",
+        "php": ">=5.3.0",
+        "ext-curl": "*"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^7.7"
