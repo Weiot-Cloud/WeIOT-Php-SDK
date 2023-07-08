@@ -8,8 +8,6 @@
         "php": ">=7.0.0",
         "ext-curl": "*"
     },
-    "minimum-stability" : "dev",
-    "prefer-stable" : true,
     "require-dev": {
         "guzzlehttp/guzzle": "^7.7"
     },
