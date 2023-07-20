@@ -33,7 +33,7 @@ class Customer {
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result;
+        return $responseCheck;
 
     }
 
@@ -61,7 +61,7 @@ class Customer {
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result;
+        return $responseCheck;
 
     }
 
@@ -79,7 +79,7 @@ class Customer {
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result;
+        return $responseCheck;
 
     }
 
@@ -97,7 +97,7 @@ class Customer {
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result;
+        return $responseCheck;
 
     }
 

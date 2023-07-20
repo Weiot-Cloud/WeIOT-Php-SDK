@@ -35,7 +35,7 @@ class DeveloperManager extends WeIOTException{
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result->token;
+        return $responseCheck;
 
     }
 

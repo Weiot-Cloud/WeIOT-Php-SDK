@@ -28,7 +28,7 @@ class Authentication {
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result->token;
+        return $responseCheck;
 
     }
 
@@ -69,7 +69,7 @@ class Authentication {
         $responseCheck = json_decode($response->getBody());
 
 
-        return $responseCheck->result;
+        return $responseCheck;
 
     }
 
@@ -87,7 +87,7 @@ class Authentication {
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result;
+        return $responseCheck;
 
     }
 

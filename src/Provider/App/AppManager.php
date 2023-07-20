@@ -33,7 +33,7 @@ class AppManager extends WeIOTException {
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result;
+        return $responseCheck;
 
     }
 
@@ -58,7 +58,7 @@ class AppManager extends WeIOTException {
 
         $responseCheck = json_decode($response->getBody());
 
-        return $responseCheck->result;
+        return $responseCheck;
 
     }
 
