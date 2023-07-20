@@ -33,9 +33,6 @@ class Customer {
 
         $responseCheck = json_decode($response->getBody());
 
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
-
         return $responseCheck->result;
 
     }
@@ -64,9 +61,6 @@ class Customer {
 
         $responseCheck = json_decode($response->getBody());
 
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
-
         return $responseCheck->result;
 
     }
@@ -85,9 +79,6 @@ class Customer {
 
         $responseCheck = json_decode($response->getBody());
 
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
-
         return $responseCheck->result;
 
     }
@@ -105,9 +96,6 @@ class Customer {
         ]);
 
         $responseCheck = json_decode($response->getBody());
-
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
 
         return $responseCheck->result;
 

@@ -25,9 +25,6 @@ class CompanyManager {
 
         $responseCheck = json_decode($response->getBody());
 
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
-
         return $responseCheck->result;
 
     }
@@ -44,9 +41,6 @@ class CompanyManager {
         ]);
 
         $responseCheck = json_decode($response->getBody());
-
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
 
         return $responseCheck->result;
 
@@ -65,8 +59,6 @@ class CompanyManager {
 
         $responseCheck = json_decode($response->getBody());
 
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
 
         return $responseCheck->result;
 
@@ -85,9 +77,6 @@ class CompanyManager {
 
         $responseCheck = json_decode($response->getBody());
 
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
-
         return $responseCheck->result;
 
     }
@@ -105,8 +94,6 @@ class CompanyManager {
 
         $responseCheck = json_decode($response->getBody());
 
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
 
         return $responseCheck->result;
 

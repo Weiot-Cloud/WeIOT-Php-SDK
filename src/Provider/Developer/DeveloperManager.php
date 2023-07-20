@@ -35,15 +35,6 @@ class DeveloperManager extends WeIOTException{
 
         $responseCheck = json_decode($response->getBody());
 
-        if($responseCheck->status !== "success")
-            throw new WeIOTException($responseCheck->message);
-
-        if(!isset($responseCheck->result->token))
-            throw new WeIOTException($responseCheck->message);
-
-        if(strlen($responseCheck->result->token) < 2)
-            throw new WeIOTException($responseCheck->message);
-
         return $responseCheck->result->token;
 
     }
