@@ -120,7 +120,7 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
 
     // Company Employer
     $getCompanyEmployers     =
-        CompanyManager::employers(
+        CompanyManager::employer(
             $Config,
             $developerLogin,
             "[Employer Login App Token]",
