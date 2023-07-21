@@ -116,6 +116,18 @@ use WeIOT\PhpSdk\Provider\Customer\Authentication;
         );
 
 
+
+
+    // Company Employer
+    $getCompanyEmployers     =
+        CompanyManager::employers(
+            $Config,
+            $developerLogin,
+            "[Employer Login App Token]",
+            "[Employer ID]"
+        );
+
+
     // Employer Reminders
     $getReminders     =
         CompanyManager::reminders(
