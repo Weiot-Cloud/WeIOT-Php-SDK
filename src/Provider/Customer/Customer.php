@@ -87,7 +87,7 @@ class Customer {
     public static function reminder($Config, $developerAuthToken, $companyAccessToken,$reminderID): mixed {
 
         $client     = new Client(["base_uri" => $Config->apiServer]);
-        $request    = new Request('GET', sprintf('/api/v1/app/access/company/reminder/%s/view?initial=%s',$reminderID, $companyAccessToken));
+        $request    = new Request('GET', sprintf('/api/v1/app/access/company/reminder/%s?initial=%s',$reminderID, $companyAccessToken));
 
         $response =  $client->send($request, [
             'headers' => [

@@ -64,6 +64,24 @@ class CompanyManager {
 
     }
 
+    public static function employer($Config, $developerAuthToken, $companyAccessToken, $employerID): mixed {
+
+        $client     = new Client(["base_uri" => $Config->apiServer]);
+        $request    = new Request('GET', sprintf('/api/v1/app/access/company/employer/%s?initial=%s',$employerID,$companyAccessToken));
+
+        $response =  $client->send($request, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s',$developerAuthToken)
+            ]
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+
+        return $responseCheck;
+
+    }
+
     public static function reminders($Config, $developerAuthToken, $companyAccessToken): mixed {
 
         $client     = new Client(["base_uri" => $Config->apiServer]);
