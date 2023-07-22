@@ -3,6 +3,7 @@
     "type": "library",
     "description": "WeIOT Php Sdk for Developer",
     "license": "MIT",
+    "version": "1.0.3",
     "minimum-stability": "dev",
     "require": {
         "guzzlehttp/guzzle": "^7.7",
