@@ -49,7 +49,7 @@ class DeveloperManager extends WeIOTException{
     public static function adminLogin(ConfigInterface $Config, $adminLoginAppToken) : mixed {
 
         $client     = new Client(["base_uri" => $Config->apiServer]);
-        $request    = new Request('POST', sprintf("api/v1/admin/verify?initial%s",$adminLoginAppToken));
+        $request    = new Request('POST', sprintf("api/v1/admin/verify?initial=%s",$adminLoginAppToken));
 
         $response = $client->send($request, [
             'form_params' => [
