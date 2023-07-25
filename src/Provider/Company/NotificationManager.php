@@ -10,22 +10,23 @@ use GuzzleHttp\Psr7\Request;
 use WeIOT\PhpSdk\Exception\WeIOTException;
 
 
-class SmsManager {
+class NotificationManager {
 
 
-    public static function send($Config, $developerAuthToken, $companyAccessToken, $smsProvider, $customerId, $messageContent): mixed {
+    public static function send($Config, $developerAuthToken, $companyAccessToken, $target, $targetValue, $title, $content): mixed {
 
         $client     = new Client(["base_uri" => $Config->apiServer]);
-        $request    = new Request('POST', sprintf('/api/v1/app/access/sms/send?initial=%s',$companyAccessToken));
+        $request    = new Request('POST', sprintf('/api/v1/app/access/notification/send?initial=%s',$companyAccessToken));
 
         $response =  $client->send($request, [
             'headers' => [
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [
-                'sms_provider'          => $smsProvider,
-                'customer_id'           => $customerId,
-                'customer_message'      => $messageContent
+                'target'            => $target,
+                'target_value'      => $targetValue,
+                'title'             => $title,
+                'content'           => $content
             ]
         ]);
 
