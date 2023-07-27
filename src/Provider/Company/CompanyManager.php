@@ -157,4 +157,23 @@ class CompanyManager {
 
     }
 
+    public static function mentions($Config, $developerAuthToken, $companyAccessToken,$prefix): mixed {
+
+        $client     = new Client(["base_uri" => $Config->apiServer]);
+        $request    = new Request('POST', sprintf('/api/v1/app/access/mentions?initial=%s', $companyAccessToken));
+
+        $response =  $client->send($request, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s',$developerAuthToken)
+            ],
+            'form_params' => [ ]
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+
+        return $responseCheck;
+
+    }
+
 }
