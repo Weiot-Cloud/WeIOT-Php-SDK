@@ -175,5 +175,23 @@ class CompanyManager {
         return $responseCheck;
 
     }
+    public static function employerProfileWithCustomerToken($Config, $customerAuthToken, $employerID): mixed {
+
+        $client     = new Client(["base_uri" => $Config->apiServer]);
+        $request    = new Request('POST', sprintf('/api/v1/app/access/company/employer/%s/profile',$employerID));
+
+        $response =  $client->send($request, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s',$customerAuthToken)
+            ],
+            'form_params' => [ ]
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+
+        return $responseCheck;
+
+    }
 
 }
