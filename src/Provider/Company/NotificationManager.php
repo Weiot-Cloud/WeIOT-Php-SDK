@@ -36,5 +36,29 @@ class NotificationManager {
 
     }
 
+    public static function sendWithoutCT($Config, $developerAuthToken, $company, $target, $targetValue, $title, $content): mixed {
+
+        $client     = new Client(["base_uri" => $Config->apiServer]);
+        $request    = new Request('POST', sprintf('/api/v1/app/notification/send'));
+
+        $response =  $client->send($request, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s',$developerAuthToken)
+            ],
+            'form_params' => [
+                'company'           => $company,
+                'target'            => $target,
+                'target_value'      => $targetValue,
+                'title'             => $title,
+                'content'           => $content
+            ]
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+        return $responseCheck;
+
+    }
+
 
 }
