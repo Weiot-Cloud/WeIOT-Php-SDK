@@ -329,4 +329,22 @@ class CompanyManager {
 
     }
 
+    public static function company($Config, $developerToken,$companyID) {
+
+        $client     = new Client(["base_uri" => $Config->apiServer]);
+        $request    = new Request('GET', sprintf('/api/v1/app/company/%s',$companyID));
+
+        $response =  $client->send($request, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s',$developerToken)
+            ],
+            'form_params' => []
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+        return $responseCheck;
+
+    }
+
 }
