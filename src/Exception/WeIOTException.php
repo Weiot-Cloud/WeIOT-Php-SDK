@@ -3,9 +3,10 @@
 
 namespace WeIOT\PhpSdk\Exception;
 
+use Exception;
+use Throwable;
 
-
-class WeIOTException extends \Exception
+class WeIOTException extends \Exception implements \Throwable
 {
 
     /**
@@ -14,7 +15,7 @@ class WeIOTException extends \Exception
      * @param int $code
      * @param \Exception|null $previous
      */
-    public function __construct($message = null, $code = 0, \Exception  $previous = null ) {
+    public function __construct($message = null, $code = 0, \Throwable  $previous = null ) {
 
         parent::__construct($message, $code, $previous);
 
