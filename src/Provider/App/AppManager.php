@@ -38,6 +38,7 @@ class AppManager extends WeIOTException {
     }
 
 
+
     /**
      * @param $Config
      * @param $developerAuthToken
