@@ -20,6 +20,8 @@ class SmsManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [

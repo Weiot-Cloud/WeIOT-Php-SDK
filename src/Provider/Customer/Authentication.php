@@ -18,6 +18,8 @@ class Authentication {
 
         $response = $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [
@@ -40,6 +42,8 @@ class Authentication {
 
         $response = $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [
@@ -62,6 +66,8 @@ class Authentication {
 
         $response = $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$customerToken)
             ]
         ]);
@@ -81,6 +87,8 @@ class Authentication {
 
         $response = $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$customerToken)
             ]
         ]);

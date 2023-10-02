@@ -20,6 +20,8 @@ class NotificationManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [
@@ -43,6 +45,8 @@ class NotificationManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [

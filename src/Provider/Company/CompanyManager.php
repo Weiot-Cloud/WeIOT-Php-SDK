@@ -3,7 +3,7 @@
 
 namespace WeIOT\PhpSdk\Provider\Company;
 
-
+use GuzzleHttp\Promise;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
@@ -19,6 +19,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ]
         ]);
@@ -36,6 +38,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ]
         ]);
@@ -53,6 +57,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ]
         ]);
@@ -64,21 +70,54 @@ class CompanyManager {
 
     }
 
-    public static function employer($Config, $developerAuthToken, $companyAccessToken, $employerID): mixed {
+    public static function employer($Config, $developerAuthToken, $companyAccessToken, $employerIDorIDS, $multiple = false): mixed {
 
         $client     = new Client(["base_uri" => $Config->apiServer]);
-        $request    = new Request('GET', sprintf('/api/v1/app/access/company/employer/%s?initial=%s',$employerID,$companyAccessToken));
-
-        $response =  $client->send($request, [
-            'headers' => [
-                'Authorization' => sprintf('Bearer %s',$developerAuthToken)
-            ]
-        ]);
-
-        $responseCheck = json_decode($response->getBody());
 
 
-        return $responseCheck;
+        if(is_array($employerIDorIDS) & $multiple):
+
+            $promises   = [];
+            $export     = [];
+
+            foreach ($employerIDorIDS as $keys => $ID):
+
+                $promises[$keys] =  $client->getAsync( sprintf('/api/v1/app/access/company/employer/%s?initial=%s',$ID,$companyAccessToken), [
+                    'headers' => [
+                        
+                        
+                        'Authorization' => sprintf('Bearer %s',$developerAuthToken)
+                    ]
+                ]);
+
+            endforeach;
+
+            $responses = Promise\Utils::unwrap($promises);
+
+            foreach ($responses as $key => $respons):
+
+                $export[$key] = json_decode($respons->getBody());
+
+            endforeach;
+
+            return $export;
+
+        else:
+            $request    = new Request('GET', sprintf('/api/v1/app/access/company/employer/%s?initial=%s',$employerIDorIDS,$companyAccessToken));
+
+            $response =  $client->send($request, [
+                'headers' => [
+                    
+                    
+                    'Authorization' => sprintf('Bearer %s',$developerAuthToken)
+                ]
+            ]);
+
+            $responseCheck = json_decode($response->getBody());
+
+
+            return $responseCheck;
+        endif;
 
     }
 
@@ -89,6 +128,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ]
         ]);
@@ -106,6 +147,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ]
         ]);
@@ -124,6 +167,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [ ]
@@ -143,6 +188,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [
@@ -164,6 +211,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ],
             'form_params' => [ ]
@@ -183,6 +232,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$customerAuthToken)
             ],
             'form_params' => [ ]
@@ -300,6 +351,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerToken)
             ],
             'form_params' => $data
@@ -318,6 +371,8 @@ class CompanyManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$developerToken)
             ],
             'form_params' => []
@@ -329,21 +384,59 @@ class CompanyManager {
 
     }
 
-    public static function company($Config, $developerToken,$companyID) {
+    public static function company($Config, $developerToken,$companyIDorIDS,$multiple = false) {
 
         $client     = new Client(["base_uri" => $Config->apiServer]);
-        $request    = new Request('GET', sprintf('/api/v1/app/company/%s',$companyID));
 
-        $response =  $client->send($request, [
-            'headers' => [
-                'Authorization' => sprintf('Bearer %s',$developerToken)
-            ],
-            'form_params' => []
-        ]);
 
-        $responseCheck = json_decode($response->getBody());
+        if(is_array($companyIDorIDS) && $multiple):
 
-        return $responseCheck;
+            $promises   = [];
+            $export     = [];
+            
+            foreach ($companyIDorIDS as $key => $ID):
+
+                $promises[$key] =  $client->getAsync( sprintf('/api/v1/app/company/%s',$ID), [
+
+                    'headers' => [
+                        
+
+                        'Authorization' => sprintf('Bearer %s',$developerToken)
+                    ],
+                    'form_params' => []
+                ]);
+
+            endforeach;
+
+            $responses = Promise\Utils::unwrap($promises);
+
+            foreach ($responses as $key => $respons):
+
+                $export[$key] = json_decode($respons->getBody());
+
+            endforeach;
+
+            return $export;
+
+        else:
+
+            $request    = new Request('GET', sprintf('/api/v1/app/company/%s',$companyIDorIDS));
+
+            $response =  $client->send($request, [
+                'headers' => [
+                    
+                    
+                    'Authorization' => sprintf('Bearer %s',$developerToken)
+                ],
+                'form_params' => []
+            ]);
+
+            $responseCheck = json_decode($response->getBody());
+
+            return $responseCheck;
+
+        endif;
+
 
     }
 

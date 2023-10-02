@@ -8,6 +8,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request;
 use WeIOT\PhpSdk\Exception\WeIOTException;
+use GuzzleHttp\Promise;
+
 
 class AdminAuthApiManager {
 
@@ -26,6 +28,8 @@ class AdminAuthApiManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$systemAuthToken)
             ]
         ]);
@@ -51,6 +55,8 @@ class AdminAuthApiManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$systemAuthToken)
             ]
         ]);
@@ -76,6 +82,8 @@ class AdminAuthApiManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$systemAuthToken)
             ]
         ]);
@@ -101,6 +109,8 @@ class AdminAuthApiManager {
 
         $response =  $client->send($request, [
             'headers' => [
+                
+                
                 'Authorization' => sprintf('Bearer %s',$systemAuthToken)
             ]
         ]);
