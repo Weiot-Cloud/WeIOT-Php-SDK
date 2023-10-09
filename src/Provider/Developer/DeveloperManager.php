@@ -66,4 +66,36 @@ class DeveloperManager extends WeIOTException{
 
     }
 
+
+    /**
+     * @param ConfigInterface $Config
+     * @return mixed
+     * @throws WeIOTException
+     * @throws WeIOTException|GuzzleException
+     */
+    public static function sendEmail(ConfigInterface $config, $developerAuthToken, $receiverEmail = "", $receiverTitle = "", $subject = "", $content = "", $ccEmails = [], $ccTitles = []) : mixed {
+
+        $client     = new Client(["base_uri" => $config->apiServer]);
+        $request    = new Request('POST', "/api/v1/app/email/send");
+
+        $response = $client->send($request, [
+            'headers' => [
+                'Authorization' => sprintf('Bearer %s',$developerAuthToken)
+            ],
+            'form_params' => [
+                'target_email'      => $receiverEmail,
+                'target_title'      => $receiverTitle,
+                'cc_list_title'     => $ccTitles,
+                'cc_list_email'     => $ccEmails,
+                'subject'           => $subject,
+                'content'           => $content,
+            ]
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+        return $responseCheck;
+
+    }
+
 }

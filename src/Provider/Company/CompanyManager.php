@@ -384,6 +384,65 @@ class CompanyManager {
 
     }
 
+    public static function customers($Config, $developerToken) {
+
+        $client     = new Client(["base_uri" => $Config->apiServer]);
+        $request    = new Request('GET', sprintf('/api/v1/app/customers'));
+
+        $response =  $client->send($request, [
+            'headers' => [
+
+
+                'Authorization' => sprintf('Bearer %s',$developerToken)
+            ],
+            'form_params' => []
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+        return $responseCheck;
+
+    }
+    public static function customersPagination($Config, $developerToken,$page = 1, $pageSize = 100) {
+
+        $client     = new Client(["base_uri" => $Config->apiServer]);
+        $request    = new Request('GET', sprintf('/api/v1/app/customers/pagination?page=%s&pageSize=%s',$page,$pageSize));
+
+        $response =  $client->send($request, [
+            'headers' => [
+
+
+                'Authorization' => sprintf('Bearer %s',$developerToken)
+            ],
+            'form_params' => []
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+        return $responseCheck;
+
+    }
+
+    public static function employeries($Config, $developerToken) {
+
+        $client     = new Client(["base_uri" => $Config->apiServer]);
+        $request    = new Request('GET', sprintf('/api/v1/app/employers'));
+
+        $response =  $client->send($request, [
+            'headers' => [
+
+
+                'Authorization' => sprintf('Bearer %s',$developerToken)
+            ],
+            'form_params' => []
+        ]);
+
+        $responseCheck = json_decode($response->getBody());
+
+        return $responseCheck;
+
+    }
+
     public static function company($Config, $developerToken,$companyIDorIDS,$multiple = false) {
 
         $client     = new Client(["base_uri" => $Config->apiServer]);

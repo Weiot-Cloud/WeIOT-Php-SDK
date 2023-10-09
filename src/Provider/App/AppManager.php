@@ -27,8 +27,6 @@ class AppManager extends WeIOTException {
 
         $response =  $client->send($request, [
             'headers' => [
-                
-                
                 'Authorization' => sprintf('Bearer %s',$developerAuthToken)
             ]
         ]);
